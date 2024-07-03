@@ -1,0 +1,64 @@
+<configuration>
+
+    <!-- Define the base directory for logs -->
+    <property name="LOG_DIR" value="${LOG_DIR:-./logs}"/>
+
+    <!-- Console appender -->
+    <appender name="COLORFUL_CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5level) [%thread] %highlight(%logger{35}) - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- ExceptionHandler File appender -->
+    <appender name="EX-FILE" class="ch.qos.logback.core.FileAppender">
+        <file>${LOG_DIR}/exceptionhandle.log</file>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Request logs File appender -->
+    <appender name="REQ-FILE" class="ch.qos.logback.core.FileAppender">
+        <file>${LOG_DIR}/requests.log</file>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Mail Logger File appender -->
+    <appender name="FILE-MAIL-LOGGER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_DIR}/mail-logger.log</file>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</Pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>${LOG_DIR}/mail-logger_%i.log</fileNamePattern>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <maxFileSize>10MB</maxFileSize>
+        </triggeringPolicy>
+    </appender>
+
+    <!-- Mail Logger -->
+    <logger name="mail-logger" level="info" additivity="false">
+        <appender-ref ref="FILE-MAIL-LOGGER" />
+    </logger>
+
+    <!-- ExceptionHandler Logger -->
+    <logger name="com.inson.ersp.commons.exceptions.ExceptionHandle" level="DEBUG" additivity="false">
+        <appender-ref ref="EX-FILE"/>
+        <appender-ref ref="COLORFUL_CONSOLE"/>
+    </logger>
+
+    <!-- Request Logger -->
+    <logger name="req-logs" level="info" additivity="false">
+        <appender-ref ref="REQ-FILE"/>
+    </logger>
+
+    <!-- Root logger level -->
+    <root level="INFO">
+        <appender-ref ref="COLORFUL_CONSOLE"/>
+    </root>
+
+</configuration>

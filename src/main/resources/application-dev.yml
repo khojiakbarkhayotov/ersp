@@ -1,0 +1,46 @@
+spring:
+  datasource:
+    username: osago
+    password: uzb
+    url: jdbc:oracle:thin:@osagodb-test.insuranceon.local:1521:OSAGO
+    driver-class-name: oracle.jdbc.OracleDriver
+    hikari:
+      maximum-pool-size: 20
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: khayotovkhojiakbar@gmail.com
+    password: 'qxzw xyxg gina awyv'
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+    protocol: smtp
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.community.dialect.OracleLegacyDialect
+token:
+  expiration:
+    time: 720
+  security:
+    key: j5PPhM73Z8PmCLPp0W51ZrE9bhQiQ2om
+server:
+  port: 8085
+  url: http://localhost:8085 # https://api-test-volins.alskom.uz
+
+microservices:
+  proref:
+    url: https://api-test-ersp.inson.uz
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+#logging:
+#  level:
+#    root: debug
