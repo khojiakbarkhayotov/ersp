@@ -1,4 +1,4 @@
-spring:
+ spring:
   datasource:
     username: osago
     password: uzb
@@ -30,6 +30,8 @@ token:
     time: 720
   security:
     key: j5PPhM73Z8PmCLPp0W51ZrE9bhQiQ2om
+
+
 server:
   port: 8085
   url: http://localhost:8085 # https://api-test-volins.alskom.uz
