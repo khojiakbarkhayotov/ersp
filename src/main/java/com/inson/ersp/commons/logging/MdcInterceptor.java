@@ -8,7 +8,8 @@ import org.springframework.web.servlet.HandlerInterceptor;
 
 import java.util.UUID;
 
-import static com.alskom.volins.VolinsApplication.TRANSACTION_ID;
+import static com.inson.ersp.ErspApplication.TRANSACTION_ID;
+
 
 @Component
 public class MdcInterceptor implements HandlerInterceptor {

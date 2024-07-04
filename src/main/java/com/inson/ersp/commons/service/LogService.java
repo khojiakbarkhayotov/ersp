@@ -1,11 +1,11 @@
 package com.inson.ersp.commons.service;
 
-import com.alskom.volins.commons.entity.LogEntity;
-import com.alskom.volins.commons.entity.UserEntity;
-import com.alskom.volins.commons.payload.request.ApiRequest;
-import com.alskom.volins.commons.payload.response.ApiExternalResponseAll;
-import com.alskom.volins.commons.payload.response.ApiResponse;
-import com.alskom.volins.commons.payload.response.ApiResponseAll;
+import com.inson.ersp.commons.entity.LogEntity;
+import com.inson.ersp.commons.entity.UserEntity;
+import com.inson.ersp.commons.payload.request.ApiRequest;
+import com.inson.ersp.commons.payload.response.ApiExternalResponseAll;
+import com.inson.ersp.commons.payload.response.ApiResponse;
+import com.inson.ersp.commons.payload.response.ApiResponseAll;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +19,7 @@ import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import java.util.TimeZone;
 
-import static com.alskom.volins.VolinsApplication.convertObjectToJson;
+import static com.inson.ersp.commons.utils.JSONUtil.convertObjectToJson;
 
 @Service
 @RequiredArgsConstructor

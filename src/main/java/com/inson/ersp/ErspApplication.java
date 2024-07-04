@@ -8,11 +8,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @OpenAPIDefinition(
         servers = {@Server(url = "${server.url}",description = "server URL")},
-        info = @Info(title = "ERSP API", version = "1.0", description = "Volunteer Insurance Products information")
+        info = @Info(title = "ERSP API", version = "1.0", description = "ERSP Insurance Products Integration")
 )
 
 @SpringBootApplication
 public class ErspApplication {
+
+    public static String TRANSACTION_ID = "transactionId";
 
     public static void main(String[] args) {
         SpringApplication.run(ErspApplication.class, args);

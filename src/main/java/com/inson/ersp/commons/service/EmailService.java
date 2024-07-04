@@ -35,8 +35,8 @@ public class EmailService {
         try {
             helper = new MimeMessageHelper(message, true);
             helper.setFrom(from);
-            helper.setTo("bek120800@gmail.com");
-            helper.setSubject("als-osgo :" + subject);
+            helper.setTo("hayotovhojiakbar@gmail.com");
+            helper.setSubject("alskom-ersp :" + subject);
             String errorText = "ClassName: " + className + ". Method: " + methodName  + ".\n" + text;
             helper.setText(errorText);
             logger.error("Email sent: " + errorText);

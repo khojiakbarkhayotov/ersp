@@ -47,7 +47,7 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        String[] path = {"/swagger-ui/**", "/v3/api-docs/**", "/products/auth/login/**", "/api/v1/file/**", "/api/v1/policy/file/**"};
+        String[] path = {"/swagger-ui/**", "/v3/api-docs/**", "/api/v1/auth/**", "/api/v1/file/**", "/api/v1/policy/file/**"};
         http
                 .authorizeHttpRequests(authorizeRequests ->
                         authorizeRequests

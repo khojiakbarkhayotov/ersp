@@ -1,8 +1,9 @@
- spring:
+---
+spring:
   datasource:
     username: osago
     password: uzb
-    url: jdbc:oracle:thin:@osagodb-test.insuranceon.local:1521:OSAGO
+    url: jdbc:oracle:thin:@192.168.0.158:1521:OSAGO
     driver-class-name: oracle.jdbc.OracleDriver
     hikari:
       maximum-pool-size: 20
@@ -10,7 +11,7 @@
     host: smtp.gmail.com
     port: 587
     username: khayotovkhojiakbar@gmail.com
-    password: 'qxzw xyxg gina awyv'
+    password: qxzw xyxg gina awyv
     properties:
       mail:
         smtp:
@@ -30,19 +31,9 @@ token:
     time: 720
   security:
     key: j5PPhM73Z8PmCLPp0W51ZrE9bhQiQ2om
-
-
 server:
-  port: 8085
-  url: http://localhost:8085 # https://api-test-volins.alskom.uz
-
-microservices:
-  proref:
-    url: https://api-test-ersp.inson.uz
-
+  port: 8083
+  url: http://localhost:8083
 springdoc:
   api-docs:
     path: /v3/api-docs
-#logging:
-#  level:
-#    root: debug

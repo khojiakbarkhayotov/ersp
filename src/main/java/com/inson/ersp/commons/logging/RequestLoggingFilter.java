@@ -12,8 +12,7 @@ import java.util.Enumeration;
 import java.util.Map;
 import java.util.UUID;
 
-import static com.alskom.volins.VolinsApplication.TRANSACTION_ID;
-
+import static com.inson.ersp.ErspApplication.TRANSACTION_ID;
 
 @Component
 public class RequestLoggingFilter implements Filter {

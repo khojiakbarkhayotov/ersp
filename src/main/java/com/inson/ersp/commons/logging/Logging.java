@@ -16,8 +16,8 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import java.util.Arrays;
 
-import static com.alskom.volins.VolinsApplication.TRANSACTION_ID;
-import static com.alskom.volins.VolinsApplication.convertObjectToJson;
+import static com.inson.ersp.ErspApplication.TRANSACTION_ID;
+import static com.inson.ersp.commons.utils.JSONUtil.convertObjectToJson;
 
 
 @Aspect
@@ -26,6 +26,7 @@ public class Logging {
 
     private static final Logger logger = LoggerFactory.getLogger("logging");
 
+    /*
     @Before("execution(* com.inson.ersp.products.travel.controllers.*.*(..))")
     public void logControllerCall(JoinPoint joinPoint) {
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
@@ -49,7 +50,7 @@ public class Logging {
         }
     }
 
-    @AfterReturning(pointcut = "execution(* com.alskom.volins.products.travel.controllers.*.*(..))", returning = "result")
+    @AfterReturning(pointcut = "execution(* com.inson.ersp.products.travel.controllers.*.*(..))", returning = "result")
     public void logControllerResponse(Object result) {
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         if (attributes != null) {
@@ -61,7 +62,7 @@ public class Logging {
         }
     }
 
-    @Before("execution(* com.alskom.volins.products.travel.services.*.*(..))")
+    @Before("execution(* com.inson.ersp.products.travel.services.*.*(..))")
     public void logServiceMethodCall(JoinPoint joinPoint) {
         Object[] args = joinPoint.getArgs();
         if (args.length > 0) {
@@ -82,7 +83,7 @@ public class Logging {
         }
     }
 
-    @AfterReturning(pointcut = "execution(* com.alskom.volins.products.travel.services.*.*(..))", returning = "result")
+    @AfterReturning(pointcut = "execution(* com.inson.ersp.products.travel.services.*.*(..))", returning = "result")
     public void logServiceMethodResponse(Object result) {
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         if (attributes != null) {
@@ -91,15 +92,15 @@ public class Logging {
         }
     }
 
-    @AfterThrowing(pointcut = "execution(* com.alskom.volins.products.travel.controllers.*.*(..))", throwing = "e")
+    @AfterThrowing(pointcut = "execution(* com.inson.ersp.products.travel.controllers.*.*(..))", throwing = "e")
     public void logTransactionError(Exception e) {
         logger.error("Failed with error: {}", e.getMessage());
     }
 
-    @AfterThrowing(pointcut = "execution(* com.alskom.volins.products.travel.services.*.*(..))", throwing = "e")
+    @AfterThrowing(pointcut = "execution(* com.inson.ersp.products.travel.services.*.*(..))", throwing = "e")
     public void logServiceMethodError(Exception e) {
         logger.error("Failed with error: {}", e.getMessage());
-    }
+    }*/
 
     public void log(String message) {
         logger.info(message);

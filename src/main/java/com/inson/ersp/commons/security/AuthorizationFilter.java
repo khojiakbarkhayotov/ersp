@@ -2,6 +2,7 @@ package com.inson.ersp.commons.security;
 
 
 
+import com.inson.ersp.commons.config.Md5Encoder;
 import com.inson.ersp.commons.payload.enums.StatusMessage;
 import com.inson.ersp.commons.payload.response.ApiResponse;
 import com.inson.ersp.commons.payload.response.StatusResponse;
@@ -11,6 +12,7 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -23,6 +25,7 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.util.Base64;
 import java.util.List;
 
 import static com.inson.ersp.commons.payload.enums.ResponseEnum.*;
@@ -32,7 +35,7 @@ import static com.inson.ersp.commons.payload.enums.ResponseEnum.*;
 public class AuthorizationFilter extends BasicAuthenticationFilter {
     private final JwtProvider jwtProvider;
     private final AuthService authService;
-//    private final Md5Encoder md5Encoder;
+    // private final Md5Encoder md5Encoder;
     private static final ApiResponse invalidToken = new ApiResponse(new StatusResponse(StatusMessage.AUTHENTICATION_FAILED, List.of("Invalid token")));
     private static ApiResponse checkUser = new ApiResponse(null);
 
@@ -70,17 +73,17 @@ public class AuthorizationFilter extends BasicAuthenticationFilter {
             }
             else if (authorizationHeader.startsWith(BASIC.getText())) {
                 super.doFilterInternal(request, response, filterChain);
-//                token = token.substring(6);
-//                byte[] decodedBytes = Base64.getDecoder().decode(token);
-//                String credentials = new String(decodedBytes);
-//                String[] usernameAndPassword = credentials.split(":");
-//                UserDetails userDetails = authService.loadUserByUsername(usernameAndPassword[0].toUpperCase());
-//                if (md5Encoder.matches(usernameAndPassword[1].toUpperCase(),userDetails.getPassword())){
-//                    UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, usernameAndPassword, userDetails.getAuthorities());
-//                    SecurityContextHolder.getContext().setAuthentication(authentication);
-//                } else {
-//                    responseWrite(response,invalidToken); return;
-//                }
+                /*token = token.substring(6);
+                byte[] decodedBytes = Base64.getDecoder().decode(token);
+                String credentials = new String(decodedBytes);
+                String[] usernameAndPassword = credentials.split(":");
+                UserDetails userDetails = authService.loadUserByUsername(usernameAndPassword[0].toUpperCase());
+                if (md5Encoder.matches(usernameAndPassword[1].toUpperCase(),userDetails.getPassword())){
+                    UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, usernameAndPassword, userDetails.getAuthorities());
+                    SecurityContextHolder.getContext().setAuthentication(authentication);
+                } else {
+                    responseWrite(response,invalidToken); return;
+                }*/
                 return;
             }
         }
