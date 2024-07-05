@@ -32,8 +32,8 @@ token:
   security:
     key: nCIQjc9F+dH07C68ioqilIUTZp5VKQZKH4E9MP2yU5acglyVlCVGozPIZlhhENpk+X9NymDBLKRN51rqCTvp5A==
 server:
-  port: 8090
-  url: http://localhost:8083
+  port: 8091
+  url: https://api-ersp.insonline.uz
 springdoc:
   api-docs:
     path: /v3/api-docs
