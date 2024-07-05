@@ -44,8 +44,8 @@ public class UserEntity implements UserDetails {
     @Column(name = "AGN_ID")
     private Long agnId;
 
-    @Column(name = "TB_PINFL")
-    private Long pinfl;
+    /*@Column(name = "TB_INPS")
+    private Long pinfl;*/
 
     @Column(name = "TOKEN")
     private String token;

@@ -3,7 +3,7 @@ spring:
   datasource:
     username: osago
     password: uzb
-    url: jdbc:oracle:thin:@192.168.0.158:1521:OSAGO
+    url: jdbc:oracle:thin:@osagodb-test.insuranceon.local:1521:OSAGO
     driver-class-name: oracle.jdbc.OracleDriver
     hikari:
       maximum-pool-size: 20
@@ -30,7 +30,7 @@ token:
   expiration:
     time: 720
   security:
-    key: j5PPhM73Z8PmCLPp0W51ZrE9bhQiQ2om
+    key: nCIQjc9F+dH07C68ioqilIUTZp5VKQZKH4E9MP2yU5acglyVlCVGozPIZlhhENpk+X9NymDBLKRN51rqCTvp5A==
 server:
   port: 8083
   url: http://localhost:8083

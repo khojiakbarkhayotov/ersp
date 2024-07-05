@@ -3,9 +3,12 @@ package com.inson.ersp.commons.security;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import java.util.Base64;
 import java.util.Date;
 
 @Component
@@ -16,14 +19,23 @@ public class JwtProvider {
     @Value("${token.security.key}")
     private String key;
 
+    private byte[] keyByte;
+
+    @PostConstruct
+    public void init() {
+        keyByte = Base64.getDecoder().decode(key);
+        expirationTime *= 1000 * 60 * 60 * 24; // Assuming expirationTime is in days, adjust as necessary
+    }
+
     public String generateToken(String username) {
         expirationTime *= 1000 * 60 * 60 * 24;
+
         return Jwts
                 .builder()
                 .setSubject(username)
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + expirationTime))
-                .signWith(SignatureAlgorithm.HS512, key)
+                .signWith(Keys.hmacShaKeyFor(keyByte),SignatureAlgorithm.HS512)
                 .compact();
     }
 

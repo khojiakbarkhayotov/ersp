@@ -7,6 +7,7 @@ import com.inson.ersp.commons.payload.response.ApiExternalResponseAll;
 import com.inson.ersp.commons.payload.response.ApiResponse;
 import com.inson.ersp.commons.payload.response.ApiResponseAll;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.inson.ersp.commons.utils.ClobUtil;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -15,6 +16,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import java.util.TimeZone;
@@ -109,13 +111,13 @@ public class LogService {
         }
     }
 
-    private LogEntity prepareLog(ApiRequest req, String message, ApiResponse response, Integer integrationStatusCode, String method, Long userId, Long anketaId) throws JsonProcessingException {
+    private LogEntity prepareLog(ApiRequest req, String message, ApiResponse response, Integer integrationStatusCode, String method, Long userId, Long anketaId) throws JsonProcessingException, SQLException {
         LogEntity log = new LogEntity();
         log.setMethod(method);
-        log.setReqContent(convertObjectToJson(req));
+        log.setReqContent(ClobUtil.convertStringToClob(convertObjectToJson(req)));
         log.setResCode(integrationStatusCode);
         log.setResMessage(message);
-        log.setResContent(convertObjectToJson(response));
+        log.setResContent(ClobUtil.convertStringToClob(convertObjectToJson(response)));
         log.setUserId(userId);
         log.setAnketaId(anketaId);
         return log;

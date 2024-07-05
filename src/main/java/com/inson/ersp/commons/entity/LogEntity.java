@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.Clob;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -12,14 +14,14 @@ import lombok.NoArgsConstructor;
 @Table(name = "LOG_API_SERVER")
 public class LogEntity {
     @Id
-    @Column(name = "ID")
+    @Column(name = "LOG_ID")
     private int id;
 
     @Column(name = "USER_ID")
     private Long userId;
 
     @Column(name = "REQ_CONTENT")
-    private String reqContent;
+    private Clob reqContent;
 
     @Column(name = "RES_CODE")
     private int resCode;
@@ -28,12 +30,12 @@ public class LogEntity {
     private String resMessage;
 
     @Column(name = "RES_CONTENT")
-    private String resContent;
+    private Clob resContent;
 
-    @Column(name = "TIME_SPENT")
+    @Column(name = "TIMESPENT")
     private Long timeSpent;
 
-    @Column(name = "ANKETA_ID")
+    @Column(name = "TB_ANKETA")
     private Long anketaId;
 
     @Column(name = "PRODUCT_TYPE")
