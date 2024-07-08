@@ -55,7 +55,7 @@ public class OsgopContractRequest extends ApiRequest {
 
     @Schema(description = "List of policies.")
     @NotNull(message = "Policies cannot be null.")
-    private List<Policy> policies;
+    private List<OsgopPolicy> policies;
 
     @Schema(description = "Information about the insurant.")
     @NotNull(message = "Insurant cannot be null.")
@@ -65,7 +65,7 @@ public class OsgopContractRequest extends ApiRequest {
     @Setter
     @NoArgsConstructor
     @ToString
-    public static class Policy {
+    public static class OsgopPolicy {
         @Schema(description = "UUID of the policy.", example = "4ee1603d-e035-4ec5-9960-d246495d5712")
         @NotNull(message = "UUID cannot be null.")
         @NotBlank(message = "UUID cannot be blank.")
