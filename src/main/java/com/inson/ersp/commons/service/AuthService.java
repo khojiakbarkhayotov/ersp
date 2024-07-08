@@ -43,7 +43,7 @@ public class AuthService implements UserDetailsService {
 
         if (user.getToken() == null || !user.getToken().startsWith(BEARER.getText()) || jwtProvider.getUsernameFromToken(user.getToken().substring(7)) == null) {
             String token = jwtProvider.generateToken(user.getTbLogin());
-            user.setToken(BEARER.getText() + token);
+            user.setToken(token);
             userRepository.save(user);
         }
         return new LoginResponse(user.getToken());
