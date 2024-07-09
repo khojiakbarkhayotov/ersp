@@ -1,6 +1,7 @@
 package com.inson.ersp.commons.security;
 
 
+import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
@@ -49,6 +50,16 @@ public class JwtProvider {
                     .getSubject();
         } catch (Exception e) {
             return null;
+        }
+    }
+
+    // Validate JWT token
+    public boolean validateToken(String token) {
+        try {
+            Jwts.parser().setSigningKey(key).parseClaimsJws(token);
+            return true;
+        } catch (JwtException | IllegalArgumentException e) {
+            return false;
         }
     }
 

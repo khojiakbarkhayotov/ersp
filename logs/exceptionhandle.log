@@ -28,3 +28,20 @@
 2024-07-08 12:00:12.489 [http-nio-8090-exec-6] ERROR c.i.e.c.exceptions.ExceptionHandle - Exception class: java.lang.Exception
 2024-07-08 12:00:12.489 [http-nio-8090-exec-6] ERROR c.i.e.c.exceptions.ExceptionHandle - Exception message: MethodArgumentNotValidException: [Contract endDate must be future or present., Contract startDate must be future or present]
 2024-07-08 13:56:59.942 [http-nio-8090-exec-10] ERROR c.i.e.c.exceptions.ExceptionHandle - Unauthorized request: Message: Bad credentials, URL: http://localhost:8090/api/v1/auth/login, Method: POST, Client: null 0:0:0:0:0:0:0:1, Transaction ID: null
+2024-07-08 14:43:27.046 [http-nio-8090-exec-5] ERROR c.i.e.c.exceptions.ExceptionHandle - Transaction ID: null
+2024-07-08 14:43:27.047 [http-nio-8090-exec-5] ERROR c.i.e.c.exceptions.ExceptionHandle - Exception occurred for URL: uri=/api/v1/osgor/contract;client=0:0:0:0:0:0:0:1;user=ERSP
+2024-07-08 14:43:27.047 [http-nio-8090-exec-5] ERROR c.i.e.c.exceptions.ExceptionHandle - Exception class: java.lang.Exception
+2024-07-08 14:43:27.047 [http-nio-8090-exec-5] ERROR c.i.e.c.exceptions.ExceptionHandle - Exception message: MethodArgumentNotValidException: [Contract endDate must be future or present., Contract startDate must be future or present]
+2024-07-08 14:43:53.449 [http-nio-8090-exec-4] ERROR c.i.e.c.exceptions.ExceptionHandle - Transaction ID: null
+2024-07-08 14:43:53.450 [http-nio-8090-exec-4] ERROR c.i.e.c.exceptions.ExceptionHandle - Exception occurred for URL: uri=/api/v1/osgop/contract;client=0:0:0:0:0:0:0:1;user=ERSP
+2024-07-08 14:43:53.450 [http-nio-8090-exec-4] ERROR c.i.e.c.exceptions.ExceptionHandle - Exception class: java.lang.Exception
+2024-07-08 14:43:53.450 [http-nio-8090-exec-4] ERROR c.i.e.c.exceptions.ExceptionHandle - Exception message: MethodArgumentNotValidException: [Contract end date must be future or present., Contract start date must be future or present.]
+2024-07-08 14:58:30.871 [http-nio-8090-exec-7] ERROR c.i.e.c.exceptions.ExceptionHandle - Unauthorized request: Message: Full authentication is required to access this resource, URL: http://localhost:8090/swagger.json/all/swagger-config, Method: GET, Client: null 0:0:0:0:0:0:0:1, Transaction ID: null
+2024-07-09 10:34:07.151 [http-nio-8090-exec-1] ERROR c.i.e.c.exceptions.ExceptionHandle - Transaction ID: null
+2024-07-09 10:34:07.152 [http-nio-8090-exec-1] ERROR c.i.e.c.exceptions.ExceptionHandle - Exception occurred for URL: uri=/api/v1/osgop/contract;client=0:0:0:0:0:0:0:1;user=ERSP
+2024-07-09 10:34:07.152 [http-nio-8090-exec-1] ERROR c.i.e.c.exceptions.ExceptionHandle - Exception class: java.lang.Exception
+2024-07-09 10:34:07.152 [http-nio-8090-exec-1] ERROR c.i.e.c.exceptions.ExceptionHandle - Exception message: MethodArgumentNotValidException: [Contract end date must be future or present., Contract start date must be future or present.]
+2024-07-09 10:47:00.983 [http-nio-8090-exec-9] ERROR c.i.e.c.exceptions.ExceptionHandle - Transaction ID: null
+2024-07-09 10:47:00.983 [http-nio-8090-exec-9] ERROR c.i.e.c.exceptions.ExceptionHandle - Exception occurred for URL: uri=/api/v1/osgop/contract;client=0:0:0:0:0:0:0:1;user=ERSP
+2024-07-09 10:47:00.983 [http-nio-8090-exec-9] ERROR c.i.e.c.exceptions.ExceptionHandle - Exception class: java.lang.Exception
+2024-07-09 10:47:00.983 [http-nio-8090-exec-9] ERROR c.i.e.c.exceptions.ExceptionHandle - Exception message: MethodArgumentNotValidException: [Contract start date must be future or present., Contract end date must be future or present.]

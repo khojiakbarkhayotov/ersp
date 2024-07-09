@@ -22,11 +22,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/v1/osgor")
 @RequiredArgsConstructor
-@Tag(name = "OSGOR", description = "APIs for osgor product")
+@Tag(name = "ОСГОР", description = "APIs for ОСГОР product")
 public class OsgorController {
     private final OsgorService osgorService;
 
-    @Operation(summary = "OSGOR contract.", description = "API to create OSGOR contract.")
+    @Operation(summary = "ОСГОР contract.", description = "API to create ОСГОР contract.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Request processed",
                     content = {@Content(mediaType = "application/json", schema=@Schema(implementation = ApiResponseAll.class))})

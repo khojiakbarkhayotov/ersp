@@ -2,7 +2,6 @@ package com.inson.ersp.commons.security;
 
 
 
-import com.inson.ersp.commons.config.Md5Encoder;
 import com.inson.ersp.commons.payload.enums.StatusMessage;
 import com.inson.ersp.commons.payload.response.ApiResponse;
 import com.inson.ersp.commons.payload.response.StatusResponse;
@@ -12,7 +11,6 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -53,23 +51,26 @@ public class AuthorizationFilter extends BasicAuthenticationFilter {
         String authorizationHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
         String token;
         if (authorizationHeader != null ){
-            if (authorizationHeader.startsWith(BEARER.getText())) {
+            if (authorizationHeader.startsWith("Bearer ")) {
                 token = authorizationHeader.substring(7);
-                String username = jwtProvider.getUsernameFromToken(token);
-
-                if (username == null) {
+                if (jwtProvider.validateToken(token)) {
+                    String username = jwtProvider.getUsernameFromToken(token);
+                    if (username != null) {
+                        UserDetails userDetails = authService.loadUserByUsername(username);
+                        if (!check(userDetails)) {
+                            responseWrite(response, checkUser);
+                            return;
+                        }
+                        UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+                        SecurityContextHolder.getContext().setAuthentication(authentication);
+                    } else {
+                        responseWrite(response, invalidToken);
+                        return;
+                    }
+                } else {
                     responseWrite(response, invalidToken);
                     return;
                 }
-
-                UserDetails userDetails = authService.loadUserByUsername(username);
-                if (check(userDetails)) {
-                    responseWrite(response, checkUser);
-                    return;
-                }
-
-                UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
-                SecurityContextHolder.getContext().setAuthentication(authentication);
             }
             else if (authorizationHeader.startsWith(BASIC.getText())) {
                 super.doFilterInternal(request, response, filterChain);
