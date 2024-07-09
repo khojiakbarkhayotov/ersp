@@ -67,7 +67,7 @@ public class CmrContractRequest extends ApiRequest {
     @Setter
     @NoArgsConstructor
     @ToString
-    public class CmrPolicyData {
+    public static class CmrPolicyData {
 
         @Schema(description = "uuid of the policy", example = "c2b654c3-5b71-46d4-9045-8676b97ee68a")
         @NotNull(message = "uuid can not be null")
