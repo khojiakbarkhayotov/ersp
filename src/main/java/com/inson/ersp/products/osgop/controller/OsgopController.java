@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.sql.SQLException;
+
 @RestController
 @RequestMapping("/api/v1/osgop")
 @RequiredArgsConstructor
@@ -32,7 +34,7 @@ public class OsgopController {
                     content = {@Content(mediaType = "application/json", schema=@Schema(implementation = ApiResponseAll.class))})
     })
     @PostMapping("/contract")
-    public HttpEntity<?> create(@RequestBody @Validated OsgopContractRequest dto){
+    public HttpEntity<?> create(@RequestBody @Validated OsgopContractRequest dto) throws SQLException {
         return new ResponseEntity<>(osgorService.createContract(dto), HttpStatus.OK);
     }
 }
